@@ -1,0 +1,14 @@
+﻿{
+  "profiles": {
+    "SnippetizR": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "articles/helloworld",
+      "applicationUrl": "http://localhost:5155",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
