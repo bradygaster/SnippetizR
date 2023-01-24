@@ -1,10 +1,23 @@
-﻿@page "articles/{article?}"
+﻿@page "/"
+@inject IArticleService _articleService;
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "SnippetizR";
+    var _snippets = await _articleService.GetArticleList();
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Here are the current snippets</p>
+</div>
+
+<div id="snippets" class="container text-center">
+    <div class="row">
+        @foreach (var snippet in _snippets)
+        {
+            <div class="col-3 snippetBox">
+                @snippet.Title
+            </div>
+        }
+    </div>
 </div>
