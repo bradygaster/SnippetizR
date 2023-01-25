@@ -17,8 +17,15 @@ body {
   margin-bottom: 60px;
 }
 
-.snippetBox {
-    display: inline-block;
-    border: solid 1px #000;
-    margin: 5px;
+.snippet { 
+    margin: 0px;
+}
+
+.card {
+    min-height: 150px;
+    margin-bottom: 30px;
+}
+
+.card a {
+    text-decoration: none;
 }
