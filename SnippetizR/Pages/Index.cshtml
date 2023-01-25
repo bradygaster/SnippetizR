@@ -11,17 +11,20 @@
     <p>Here are the current snippets</p>
 </div>
 
+<div id="code" class="container">
+</div>
+
 <div id="snippets" class="container">
     <div class="row">
         @foreach (var snippet in _snippets)
         {
-            <div class="col-sm-5 col-md-4 col-lg-3 snippet">
+            <div class="col-sm-5 col-md-4 col-lg-4 snippet" data-slug="@snippet.Slug">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">@snippet.Title</h5>
                     </div>
                     <div class="card-footer small">
-                        <a href="#" class="card-link">@snippet.Category</a>
+                        <i title="Copy to clipboard" data-slug="@snippet.Slug" class="copyBtn bi bi-clipboard2-plus btn btn-sm btn-primary"></i>
                     </div>
                 </div>
             </div>
@@ -29,3 +32,7 @@
     </div>
 </div>
 
+@section Scripts
+{
+    <script type="text/javascript" src="~/js/index.js"></script>
+}

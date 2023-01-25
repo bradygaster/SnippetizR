@@ -1,6 +1,7 @@
 using Markdig;
 using Markdig.SyntaxHighlighting;
 using SnippetizR;
+using System.Text.RegularExpressions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,17 @@ app.MapGet("/articles/{article}", async (string article,
 {
     var result = await articleService.GetArticle(article);
     return Results.Content(result.Html, "text/html");
+});
+
+app.MapGet("/articles/{article}/copy", async (string article,
+    IArticleService articleService) =>
+{
+    var result = await articleService.GetArticle(article);
+    var code = Regex.Replace(result.Html, "<[^>]*>", "");
+    code = Regex.Replace(code, "&quot;", "\"");
+    code = Regex.Replace(code, "&gt;", ">");
+    code = Regex.Replace(code, "&lt;", "<");
+    return Results.Content(code, "text/plain");
 });
 
 app.Run();
