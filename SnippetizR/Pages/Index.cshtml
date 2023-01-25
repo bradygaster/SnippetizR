@@ -16,30 +16,28 @@
 <div id="snippets" class="container">
     @foreach(var category in _snippets.Select(x => x.Category).Distinct().OrderBy(x => x))
     {
-        <div class="row">
-            <div class="col">
-            </div>
+        <div class="row bg-primary text-white categoryHeader">
+            <div class="col h2">@category</div>
         </div>
-    }
-
-    <div class="row">
-        @foreach (var snippet in _snippets)
-        {
-            <div class="col-sm-5 col-md-4 col-lg-4 snippet" data-slug="@snippet.Slug">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">@snippet.Title</h5>
-                    </div>
-                    <div class="card-header">
-                        @Html.Raw(snippet.Html)
-                    </div>
-                    <div class="card-footer small">
-                        <i title="Copy to clipboard" data-slug="@snippet.Slug" class="copyBtn bi bi-clipboard2-plus btn btn-sm btn-primary"></i>
+        <div class="row">
+            @foreach (var snippet in _snippets.Where(x => x.Category == category))
+            {
+                <div class="col-sm-5 col-md-4 col-lg-4 snippet" data-slug="@snippet.Slug">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@snippet.Title</h5>
+                        </div>
+                        <div class="card-header">
+                            @Html.Raw(snippet.Html)
+                        </div>
+                        <div class="card-footer small">
+                            <i title="Copy to clipboard" data-slug="@snippet.Slug" class="copyBtn bi bi-clipboard2-plus btn btn-sm btn-primary"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
+    }
 </div>
 
 @section Scripts
