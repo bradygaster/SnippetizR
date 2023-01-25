@@ -28,7 +28,6 @@ body {
     }
 
 .card {
-    min-height: 150px;
     margin-bottom: 30px;
 }
 
@@ -36,9 +35,37 @@ body {
         text-decoration: none;
     }
 
+    .card .card-header {
+        height: 140px;
+        -ms-overflow-style: none; /* for Internet Explorer, Edge */
+        scrollbar-width: none; /* for Firefox */
+        overflow-y: hidden;
+    }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .card .card-header::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card .card-header pre {
+            height: 150px;
+            -ms-overflow-style: none; /* for Internet Explorer, Edge */
+            scrollbar-width: none; /* for Firefox */
+            overflow-y: hidden;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .card .card-header::-webkit-scrollbar pre {
+            display: none;
+        }
+
 pre {
     background-color: ghostwhite;
-    font-size: 1.3em;
+    font-size: 1.1em;
+}
+
+#code-container {
+    margin-top: 30px;
 }
 
 #code {

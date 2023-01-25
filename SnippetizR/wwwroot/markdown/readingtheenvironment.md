@@ -16,6 +16,5 @@ if (!app.Environment.IsDevelopment())
 
 app.MapGet("/", () => "Hello World");
 app.MapGet("/oops", () => "Oops! An error happened.");
-
 app.Run();
 ```

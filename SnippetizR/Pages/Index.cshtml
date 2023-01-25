@@ -4,17 +4,24 @@
 @{
     ViewData["Title"] = "SnippetizR";
     var _snippets = await _articleService.GetArticleList();
+    _snippets = _snippets.OrderBy(x => x.Category).ThenBy(x => x.Title).ToList();
+    var _categories = string.Empty;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Here are the current snippets</p>
-</div>
-
-<div id="code" class="container">
+<div id="code-container" class="container sticky-top">
+    <div id="code" class="container">
+    </div>
 </div>
 
 <div id="snippets" class="container">
+    @foreach(var category in _snippets.Select(x => x.Category).Distinct().OrderBy(x => x))
+    {
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    }
+
     <div class="row">
         @foreach (var snippet in _snippets)
         {
@@ -22,6 +29,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">@snippet.Title</h5>
+                    </div>
+                    <div class="card-header">
+                        @Html.Raw(snippet.Html)
                     </div>
                     <div class="card-footer small">
                         <i title="Copy to clipboard" data-slug="@snippet.Slug" class="copyBtn bi bi-clipboard2-plus btn btn-sm btn-primary"></i>

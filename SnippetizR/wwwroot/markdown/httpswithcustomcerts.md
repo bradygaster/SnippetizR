@@ -13,8 +13,6 @@ builder.Configuration["Kestrel:Certificates:Default:KeyPath"] = "site.key";
 var app = builder.Build();
 
 app.Urls.Add("https://localhost:3000");
-
 app.MapGet("/", () => "Hello World");
-
 app.Run();
 ```

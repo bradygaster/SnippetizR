@@ -23,7 +23,7 @@ namespace SnippetizR
             var result = new List<Article>();
             foreach (var file in directoryContents)
             {
-                result.Add(await GetArticle(file.Name.Replace(".md", ""), false));
+                result.Add(await GetArticle(file.Name.Replace(".md", ""), true));
             }
             return result;
         }
