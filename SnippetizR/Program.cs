@@ -26,8 +26,7 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapRazorPages();
 
-app.MapGet("/articles", async (MarkdownPipeline pipeline,
-    IArticleService articleService) =>
+app.MapGet("/articles", async (IArticleService articleService) =>
 {
     var result = await articleService.GetArticleList();
     return Results.Ok(result);
